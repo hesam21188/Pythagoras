@@ -1,6 +1,6 @@
 from tkinter import *
 import random as rm
-
+from PIL import ImageTk, Image
 
 
 def make_equation(difficulty):
@@ -21,11 +21,19 @@ def make_equation(difficulty):
 
 window = Tk()
 window.title("Pythagoras")
+window.iconbitmap("icon.ico")
 
 
+frame1 = Frame(window)
+frame1.pack(fill="both",expand=True)
+
+frame2 = Frame(window)
+frame2.pack(fill="both",expand=True)
+
+triangle = ImageTk.PhotoImage(Image.open("triangle.png"))
+img_triangle = Label(frame1, image = triangle)
+img_triangle.place(relx=0.5, rely=0.5, anchor=CENTER)
 
 
-
-
-window.geometry("1280x720")
+window.geometry("1360x768")
 window.mainloop()
