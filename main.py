@@ -1,7 +1,7 @@
 from tkinter import *
 import random as rm
 from PIL import ImageTk, Image
-from playsound import playsound
+
 
 score = 0
 
@@ -16,15 +16,15 @@ def make_equation():
 def submit():
     answer = inp.get()
     if int(answer) == int(make_equation.c):
-        print("OK")
+        print("True")
         global score
         score += 1
-        playsound('trueAnswer.mp3')
         socor.config(text=f"Score : {score}")
     else:
-        print("NO",make_equation.c)
+        print("false ",make_equation.c)
+        score -= 0.5
+        socor.config(text=f"Score : {score}")
     inp.delete(0, END)
-    playsound('falseAnswer.mp3')
     make_equation()
 
 def handler(e):
