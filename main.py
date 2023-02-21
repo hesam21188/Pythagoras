@@ -1,7 +1,9 @@
 from tkinter import *
 import random as rm
 from PIL import ImageTk, Image
+from playsound import playsound
 
+score = 0
 
 def make_equation():
     a = rm.randint(1,10)
@@ -15,10 +17,18 @@ def submit():
     answer = inp.get()
     if int(answer) == int(make_equation.c):
         print("OK")
-        inp.delete(0, END)
+        global score
+        score += 1
+        playsound('trueAnswer.mp3')
+        socor.config(text=f"Score : {score}")
     else:
         print("NO",make_equation.c)
-        inp.delete(0, END)
+    inp.delete(0, END)
+    playsound('falseAnswer.mp3')
+    make_equation()
+
+def handler(e):
+    submit()
 
 
 window = Tk()
@@ -35,7 +45,7 @@ inp = Entry(window,font=('arial 18'))
 btn_ok = Button(window,text="ok",fg="yellow",bg="black",command=submit)
 btn_ref = Button(window,text="refresh",fg="yellow",bg="black",command=make_equation)
 radical = Label(window,text="√",font="arial 32 bold")
-socor = Label(window,text="",font="arial 16")
+socor = Label(window,text="Score : 0",font="arial 16",bg="black",fg="yellow")
 
 
 img_triangle.place(relx=0.5, rely=0.5, anchor=CENTER)
@@ -47,7 +57,9 @@ inp_text.place(relx=0.5, rely=0.5,y=185,x=-165, anchor=CENTER)
 radical.place(relx=0.5, rely=0.5,y=185,x=-140, anchor=CENTER)
 btn_ok.place(relx=0.5, rely=0.5,y=235,x=5, anchor=CENTER)
 btn_ref.place(relx=0.5, rely=0.5,y=270,x=5, anchor=CENTER)
+socor.place(relx=0.5, rely=0.5,y=-200, anchor=CENTER)
 make_equation()
+window.bind('<Return>',handler)
 
 
 
