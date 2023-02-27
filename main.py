@@ -7,11 +7,11 @@ score = 0
 
 def make_equation():
     make_equation.a = rm.randint(11,25)
-    make_equation.b = rm.randint(5,11)
+    make_equation.b = rm.randint(5,12)
     angle_1.config(text=make_equation.a)
     angle_2.config(text=make_equation.b,)
     make_equation.c = (make_equation.a**2)+(make_equation.b**2)
-    yi = 10.45*make_equation.b
+    yi = 209-(10.45*make_equation.b)
     canvas_window.delete("all")
     canvas_window.create_polygon([250,10,250,200,yi,200],outline='black',fill='gray', width=2)
 
@@ -54,9 +54,9 @@ socor = Label(window,text="Score : 0",font="arial 16",bg="black",fg="yellow")
 
 #img_triangle.place(relx=0.5, rely=0.5, anchor=CENTER)
 make_equation()
-angle_1.place(relx=0.5, rely=0.5,y=-25,x=-25, anchor=CENTER)
-angle_2.place(relx=0.5, rely=0.5,y=125,x=5, anchor=CENTER)
-hypotenuse.place(relx=0.5, rely=0.5,y=0,x=160, anchor=CENTER)
+hypotenuse.place(relx=0.5, rely=0.5,y=-25,x=15, anchor=CENTER)
+angle_2.place(relx=0.5, rely=0.5,y=125,x=50, anchor=CENTER)
+angle_1.place(relx=0.5, rely=0.5,y=0,x=160, anchor=CENTER)
 inp.place(relx=0.5, rely=0.5,y=185,x=5, anchor=CENTER)
 inp_text.place(relx=0.5, rely=0.5,y=185,x=-165, anchor=CENTER)
 radical.place(relx=0.5, rely=0.5,y=185,x=-140, anchor=CENTER)
@@ -66,7 +66,7 @@ socor.place(relx=0.5, rely=0.5,y=-200, anchor=CENTER)
 
 
 
-yi = 10.45*make_equation.b
+yi = 209-(10.45*make_equation.b)
 canvas_window.create_polygon([250,10,250,200,yi,200],outline='black',fill='gray', width=2)
 
 
